@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // const ComponentA = ({prop1}) => {
 const ComponentA = (props) => {
@@ -40,6 +40,11 @@ function Home() {
   const change = (incrementor) => {
     setValue(value + incrementor)
   }
+
+  useEffect(() => {
+    // if passing parameters in [dependencies] is only change if the parameters change, if empty [] will be call only one time.
+    console.log('Function callback called when react is rendering')
+  }, [])
 
   return (
     <>
