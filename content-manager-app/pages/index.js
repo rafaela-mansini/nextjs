@@ -15,8 +15,11 @@ const ComponentA = (props) => {
 }
 
 class ComponentB extends React.Component{
-  state = {
-    value: 10
+  constructor(){
+    super()
+    this.state = {
+      value: 10
+    }
   }
 
   changeState(incrementor){
@@ -24,14 +27,24 @@ class ComponentB extends React.Component{
   }
 
   render(){
+    const {myProps: MyProps, OtherProps} = this.props
     return(
       <>
         Current value CompB: <h1>{ this.state.value }</h1>
         <button onClick={() => this.changeState(this.state.value-1)}>-</button>
         <button onClick={() => this.changeState(this.state.value+1)}>+</button>
+        <MyProps />
+        <OtherProps />
       </>
     )
   }
+}
+
+function MyComponent() {
+  return <h1>My Component</h1>
+}
+function MyComponent2() {
+  return <h1>My Component Two</h1>
 }
 
 function Home() {
@@ -57,6 +70,8 @@ function Home() {
         prop3={true}
         prop4={() => <div>My NEW JSX!</div>}
       />
+      <ComponentB myProps={MyComponent}
+        OtherProps={MyComponent2} />
     </>
   )
 }
