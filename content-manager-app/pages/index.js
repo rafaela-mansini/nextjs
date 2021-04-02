@@ -10,9 +10,9 @@ function Home() {
   return (
     <>
       <Layout>
-        <ResourceHighlight resources={resources} />
+        <ResourceHighlight resources={resources.slice(0,2)} />
         <Newsletter />
-        <ResourceList />
+        <ResourceList resources={resources.slice(2)} />
       </Layout>
     </>
   )
