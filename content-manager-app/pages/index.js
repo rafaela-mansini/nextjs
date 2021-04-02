@@ -3,14 +3,14 @@ import ResourceHighlight from 'components/ResourceHighlight'
 import Newsletter from 'components/Newsletter'
 import ResourceList from 'components/ResourceList'
 
-
+import { resources } from 'api/data'
 
 function Home() {
 
   return (
     <>
       <Layout>
-        <ResourceHighlight />
+        <ResourceHighlight resources={resources} />
         <Newsletter />
         <ResourceList />
       </Layout>
