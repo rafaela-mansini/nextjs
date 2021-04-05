@@ -6,21 +6,27 @@ const DEFAULT_DATA = {
   title: "",
   description: "",
   link: "",
-  priority: "0",
-  timeToFinish: 60,
-  active: true
+  priority: "",
+  timeToFinish: 0,
+  active: false
 }
 
 const ResourceCreate = () => {
 
   const [form, setForm] = useState(DEFAULT_DATA);
 
+  const reset = () => setForm(DEFAULT_DATA)
+
   const submitForm = () => {
     alert(JSON.stringify(form))
   }
 
-  const handleTitleChange = (event) => {
-    setForm({title: event.target.value})
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setForm({
+      ...form,
+      [name]: value
+    })
   }
 
   return(
@@ -34,8 +40,9 @@ const ResourceCreate = () => {
               <label className="label">Title</label>
               <div className="control">
                 <input 
+                  name="title"
+                  onChange={handleChange}
                   className="input"
-                  onChange={handleTitleChange}
                   type="text" 
                   placeholder="Insert the title"
                   value={form.title} />
@@ -45,7 +52,9 @@ const ResourceCreate = () => {
             <div className="field">
               <label className="label">Description</label>
               <div className="control">
-                <textarea 
+                <textarea
+                  name="description"
+                  onChange={handleChange}
                   className="textarea" 
                   placeholder="Insert here your description"
                   value={form.description}>
@@ -57,6 +66,8 @@ const ResourceCreate = () => {
               <label className="label">Link</label>
               <div className="control">
                 <input 
+                  name="link"
+                  onChange={handleChange}
                   className="input" 
                   type="text" 
                   placeholder="Insert a link"
@@ -69,7 +80,9 @@ const ResourceCreate = () => {
               <div className="field control">
                 <label className="label">Priority</label>
                 <div className="control">
-                  <input 
+                  <input
+                    name="priority"
+                    onChange={handleChange}
                     className="input" 
                     type="number" 
                     placeholder="Insert the priority"
@@ -80,7 +93,9 @@ const ResourceCreate = () => {
               <div className="field control">
                 <label className="label">Time to finish</label>
                 <div className="control">
-                  <input 
+                  <input
+                    name="timeToFinish"
+                    onChange={handleChange}
                     className="input" 
                     type="number" 
                     placeholder="Insert a time to finish"
@@ -93,9 +108,11 @@ const ResourceCreate = () => {
                 <label className="label">Is active?</label>
                 <div className="control">
                   <div className="select">
-                    <select defaultValue={form.active}>
-                      <option>Yes</option>
-                      <option>No</option>
+                    <select 
+                      onChange={handleChange}
+                      defaultValue={form.active}>
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
                     </select>
                   </div>
                 </div>
@@ -108,6 +125,11 @@ const ResourceCreate = () => {
                   type="button"
                   onClick={submitForm}
                   className="button is-link">Save</button>
+              </div>
+              <div className="control">
+                <button
+                  onClick={reset}
+                  className="button is-link is-light">Reset Form</button>
               </div>
             </div>
 
