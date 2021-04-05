@@ -1,7 +1,27 @@
 import Layout from 'components/Layout'
 import Wrapper from 'components/Wrapper'
+import { useState } from 'react'
+
+const DEFAULT_DATA = {
+  title: "",
+  description: "",
+  link: "",
+  priority: "0",
+  timeToFinish: 60,
+  active: true
+}
 
 const ResourceCreate = () => {
+
+  const [form, setForm] = useState(DEFAULT_DATA);
+
+  const submitForm = () => {
+    alert(JSON.stringify(form))
+  }
+
+  const handleTitleChange = (event) => {
+    setForm({title: event.target.value})
+  }
 
   return(
     <Layout>
@@ -14,18 +34,21 @@ const ResourceCreate = () => {
               <label className="label">Title</label>
               <div className="control">
                 <input 
-                  className="input" 
+                  className="input"
+                  onChange={handleTitleChange}
                   type="text" 
-                  placeholder="Insert the title" />
+                  placeholder="Insert the title"
+                  value={form.title} />
               </div>
             </div>
 
             <div className="field">
               <label className="label">Description</label>
-              <div classNameclass="control">
+              <div className="control">
                 <textarea 
                   className="textarea" 
-                  placeholder="Insert here your description">
+                  placeholder="Insert here your description"
+                  value={form.description}>
                   </textarea>
               </div>
             </div>
@@ -36,11 +59,12 @@ const ResourceCreate = () => {
                 <input 
                   className="input" 
                   type="text" 
-                  placeholder="Insert a link" />
+                  placeholder="Insert a link"
+                  value={form.link} />
               </div>
             </div>
 
-            <div class="field is-grouped">
+            <div className="field is-grouped">
       
               <div className="field control">
                 <label className="label">Priority</label>
@@ -48,7 +72,8 @@ const ResourceCreate = () => {
                   <input 
                     className="input" 
                     type="number" 
-                    placeholder="Insert the priority" />
+                    placeholder="Insert the priority"
+                    value={form.priority} />
                 </div>
               </div>
 
@@ -58,7 +83,9 @@ const ResourceCreate = () => {
                   <input 
                     className="input" 
                     type="number" 
-                    placeholder="Insert a time to finish (in minutes)" />
+                    placeholder="Insert a time to finish"
+                    value={form.timeToFinish} />
+                    <p className="help">Time in minutes</p>
                 </div>
               </div>
 
@@ -66,7 +93,7 @@ const ResourceCreate = () => {
                 <label className="label">Is active?</label>
                 <div className="control">
                   <div className="select">
-                    <select>
+                    <select defaultValue={form.active}>
                       <option>Yes</option>
                       <option>No</option>
                     </select>
@@ -77,7 +104,10 @@ const ResourceCreate = () => {
 
             <div className="field is-grouped is-grouped-centered">
               <div className="control">
-                <button className="button is-link">Save</button>
+                <button
+                  type="button"
+                  onClick={submitForm}
+                  className="button is-link">Save</button>
               </div>
             </div>
 
