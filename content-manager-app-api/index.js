@@ -1,6 +1,14 @@
 const express = require("express")
 const app = express()
 const PORT = 3001
+const cors = require("cors")
+
+app.use(cors(corsOptions))
+
+var corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 const fs = require("fs")
 const path = require("path")
