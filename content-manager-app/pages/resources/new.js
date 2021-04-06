@@ -1,6 +1,8 @@
+import { useState } from 'react'
+import axios from 'axios'
+
 import Layout from 'components/Layout'
 import Wrapper from 'components/Wrapper'
-import { useState } from 'react'
 
 const DEFAULT_DATA = {
   title: "",
@@ -8,7 +10,7 @@ const DEFAULT_DATA = {
   link: "",
   priority: "",
   timeToFinish: 0,
-  active: false
+  status: "active"
 }
 
 const ResourceCreate = () => {
@@ -18,11 +20,12 @@ const ResourceCreate = () => {
   const reset = () => setForm(DEFAULT_DATA)
 
   const submitForm = () => {
-    fetch("/api/resources", {
-      body: JSON.stringify(form),
-      headers: {"Content-Type": "application/json"},
-      method: "POST"
-    })
+    axios.post("/api/resources", form)
+      .then((res) => {
+        alert(res?.data)
+        reset()
+      })
+      .catch((error) => alert(error?.response?.data))
   }
 
   const handleChange = (e) => {
@@ -109,14 +112,15 @@ const ResourceCreate = () => {
               </div>
 
               <div className="field control">
-                <label className="label">Is active?</label>
+                <label className="label">Status</label>
                 <div className="control">
                   <div className="select">
                     <select 
+                      name="status"
                       onChange={handleChange}
                       defaultValue={form.active}>
-                      <option value="1">Yes</option>
-                      <option value="0">No</option>
+                      <option value="active">Active</option>
+                      <option value="inactive">Inactive</option>
                     </select>
                   </div>
                 </div>
@@ -132,6 +136,7 @@ const ResourceCreate = () => {
               </div>
               <div className="control">
                 <button
+                  type="button"
                   onClick={reset}
                   className="button is-link is-light">Reset Form</button>
               </div>
