@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const ResourceHighlight = ({ resources }) => {
 
 	return (
@@ -15,6 +17,9 @@ const ResourceHighlight = ({ resources }) => {
 												<h2 className="subtitle is-4">{resource.createdAt}</h2>
 												<h1 className="title">{resource.title}</h1>
 												<p>{resource.content}</p>
+												<Link href={`/resources/${resource.id}`}>
+													<a className="button">Learn more...</a>
+												</Link>
 											</div>
 										</div>
 									</div>
