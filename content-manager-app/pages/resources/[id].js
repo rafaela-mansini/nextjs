@@ -30,6 +30,15 @@ const ResourceDetail = ({ resource }) => {
   )
 }
 
+// ResourceDetail.getInitialProps = async ({ query }) => {
+//   const dataResponse = await fetch(`http://localhost:3001/api/resources/${query.id}`)
+//   const data = await dataResponse.json()
+
+//   return {
+//     resource: data
+//   }
+// }
+
 // we can use params or query (with query we can get the query in URL)
 export async function getServerSideProps({ query }) {
   const dataResponse = await fetch(`http://localhost:3001/api/resources/${query.id}`)
