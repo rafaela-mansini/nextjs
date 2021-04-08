@@ -122,7 +122,7 @@
   {
     "id": "1",
     "title": "Learning Singleton Pattern",
-    "content": "I would like to learn singleton in JS Language, it's important for my work",
+    "description": "I would like to learn singleton in JS Language, it's important for my work",
     "link": "https://link.com",
     "image": "https://image.com",
     "priority": 3,
@@ -133,7 +133,7 @@
   {
     "id": "2",
     "title": "Resource 2",
-    "content": "Description for resource 2",
+    "description": "Description for resource 2",
     "link": "https://link.com",
     "image": "https://image.com",
     "priority": 2,
@@ -144,7 +144,7 @@
   {
     "id": "3",
     "title": "Resource 3",
-    "content": "Description for resource 3",
+    "description": "Description for resource 3",
     "link": "https://link.com",
     "image": "https://image.com",
     "priority": 1,
