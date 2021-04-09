@@ -161,5 +161,15 @@
     "status": "active",
     "createdAt": "2021-04-06T22:44:06.781Z",
     "id": "1617749046781"
+  },
+  {
+    "title": "New resource",
+    "description": "New resource to try static pages",
+    "link": "http://localhost/test",
+    "priority": "3",
+    "timeToFinish": "60",
+    "status": "active",
+    "createdAt": "2021-04-06T22:44:06.781Z",
+    "id": "123456"
   }
 ]

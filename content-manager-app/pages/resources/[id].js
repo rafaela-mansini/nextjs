@@ -1,7 +1,15 @@
+import { useRouter } from 'next/router'
+
 import Layout from 'components/Layout'
 import Wrapper from 'components/Wrapper'
 
 const ResourceDetail = ({ resource }) => {
+
+  const router = useRouter()
+  if(router.isFallback){
+    return <div>Loading...</div>
+  }
+
   return(
 
     <Layout>
@@ -40,9 +48,39 @@ const ResourceDetail = ({ resource }) => {
 // }
 
 // we can use params or query (with query we can get the query in URL)
-export async function getServerSideProps({ query }) {
-  const dataResponse = await fetch(`http://localhost:3001/api/resources/${query.id}`)
-  const data = await dataResponse.json()
+// export async function getServerSideProps({ query }) {
+//   const dataResponse = await fetch(`http://localhost:3001/api/resources/${query.id}`)
+//   const data = await dataResponse.json()
+
+//   return {
+//     props: {
+//       resource: data
+//     }
+//   }
+// }
+
+// percorre os resources que deverão ser criados
+export async function getStaticPaths(){
+
+  const response = await fetch("http://localhost:3001/api/resources")
+  const data = await response.json()
+  const paths = data.map(resource => {
+    return{
+      params: { id: resource.id }
+    }
+  })
+
+  return {
+    paths,
+    // false: means that other routes should resolve into 4040 page
+    fallback: true
+  }
+}
+
+// função que exporta de forma estática, precisa existir as páginas mas é bacana pois é cacheado, então é extremamente rapido.
+export async function getStaticProps({ params }){
+  const response = await fetch(`http://localhost:3001/api/resources/${params.id}`)
+  const data = await response.json()
 
   return {
     props: {
@@ -50,5 +88,6 @@ export async function getServerSideProps({ query }) {
     }
   }
 }
+
 
 export default ResourceDetail
