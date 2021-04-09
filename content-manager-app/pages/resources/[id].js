@@ -85,7 +85,9 @@ export async function getStaticProps({ params }){
   return {
     props: {
       resource: data
-    }
+    },
+    // revalidate your cache pages, in seconds
+    revalidate: 5
   }
 }
 
