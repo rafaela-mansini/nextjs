@@ -19,8 +19,6 @@ export default async function(req, res){
       ? "http://localhost:3001/api/resources" 
       : `http://localhost:3001/api/resources/${id}`
 
-      console.log(url)
-
     try {
       const axiosRes = await axios[req.method.toLowerCase()](url, req.body)
       return res.send(axiosRes.data)

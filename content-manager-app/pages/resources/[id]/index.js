@@ -1,8 +1,16 @@
+import Link from 'next/link'
+import axios from 'axios'
+
 import Layout from 'components/Layout'
 import Wrapper from 'components/Wrapper'
-import Link from 'next/link'
 
 const ResourceDetail = ({ resource }) => {
+
+  const activateResource = () => {
+    axios.patch("/api/resources", {...resource, status: "active"})
+      .then(_=> alert("Resources has been updated"))
+      .catch(_=> alert('Cannot activate the resource!'))
+  }
 
   return(
 
@@ -19,9 +27,15 @@ const ResourceDetail = ({ resource }) => {
                       <h2 className="subtitle is-4">{resource.createdAt}</h2>
                       <h1 className="title">{resource.title}</h1>
                       <p>{resource.description}</p>
+                      <p>Time to finish: {resource.timeToFinish} minutes</p>
                       <Link href={`/resources/${resource.id}/edit`}>
                         <a className="button">Update</a>
                       </Link>
+                      <button 
+                        onClick={activateResource}
+                        className="button is-success ml-3">
+                        Activate
+                      </button>
                     </div>
                   </div>
                 </div>

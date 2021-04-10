@@ -125,7 +125,7 @@
     "link": "test",
     "priority": "5",
     "timeToFinish": "5",
-    "status": "inactive",
+    "status": "active",
     "createdAt": "2021-04-06T22:52:57.731Z",
     "id": "1617749577731"
   },
@@ -159,7 +159,7 @@
     "priority": 2,
     "timeToFinish": 60,
     "createdAt": "April 02, 2020",
-    "status": "inactive"
+    "status": "active"
   },
   {
     "id": "3",
