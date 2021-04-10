@@ -6,6 +6,8 @@ import Wrapper from 'components/Wrapper'
 
 const ResourceDetail = ({ resource }) => {
 
+  const isInactive = resource.status === 'inactive' ? true : false
+
   const activateResource = () => {
     axios.patch("/api/resources", {...resource, status: "active"})
       .then(_=> alert("Resources has been updated"))
@@ -31,11 +33,15 @@ const ResourceDetail = ({ resource }) => {
                       <Link href={`/resources/${resource.id}/edit`}>
                         <a className="button">Update</a>
                       </Link>
-                      <button 
-                        onClick={activateResource}
-                        className="button is-success ml-3">
-                        Activate
-                      </button>
+                      {
+                        isInactive
+                          ? <button 
+                              onClick={activateResource}
+                              className="button is-success ml-3">
+                              Activate
+                            </button>
+                          : null
+                      }
                     </div>
                   </div>
                 </div>

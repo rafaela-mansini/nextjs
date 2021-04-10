@@ -100,20 +100,6 @@ const ResourceForm = ({onFormSubmit, titleForm, resource}) => {
             </div>
           </div>
 
-          <div className="field control">
-            <label className="label">Status</label>
-            <div className="control">
-              <div className="select">
-                <select 
-                  name="status"
-                  onChange={handleChange}
-                  defaultValue={form.active}>
-                  <option value="active">Active</option>
-                  <option value="inactive">Inactive</option>
-                </select>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div className="field is-grouped is-grouped-centered">
