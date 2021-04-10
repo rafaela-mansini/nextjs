@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const ResourceForm = ({onFormSubmit}) => {
+const ResourceForm = ({onFormSubmit, titleForm, resource}) => {
 
   const DEFAULT_DATA = {
     title: "",
@@ -11,7 +11,7 @@ const ResourceForm = ({onFormSubmit}) => {
     status: "active"
   }
   
-  const [form, setForm] = useState(DEFAULT_DATA);
+  const [form, setForm] = useState(resource || DEFAULT_DATA);
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -29,7 +29,7 @@ const ResourceForm = ({onFormSubmit}) => {
 
   return(
     <div className="forms">
-      <h1 className="title">Add new resources</h1>
+      <h1 className="title">{titleForm} new resources</h1>
       <form>
 
         <div className="field">

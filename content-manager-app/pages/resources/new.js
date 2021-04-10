@@ -21,7 +21,7 @@ const ResourceCreate = () => {
   return(
     <Layout>
       <Wrapper>
-        <ResourceForm onFormSubmit={createResource} />
+        <ResourceForm onFormSubmit={createResource} titleForm="Add" />
       </Wrapper>
     </Layout>
   )
