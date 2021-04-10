@@ -64,6 +64,13 @@ app.get("/api/resources/:id", (req, res) => {
   res.send(resource)
 })
 
+app.get("/api/activeresource", (req, res) => {
+  const resources = getResources()
+  const activeResource = resources.find(resource => resource.status === 'active')
+
+  res.send(activeResource)
+})
+
 app.post("/api/resources", (req, res) => {
   const resources = getResources()
   const resource = req.body

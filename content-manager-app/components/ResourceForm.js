@@ -8,7 +8,7 @@ const ResourceForm = ({onFormSubmit, titleForm, resource}) => {
     link: "",
     priority: "",
     timeToFinish: 0,
-    status: "active"
+    status: "inactive"
   }
   
   const [form, setForm] = useState(resource || DEFAULT_DATA);
